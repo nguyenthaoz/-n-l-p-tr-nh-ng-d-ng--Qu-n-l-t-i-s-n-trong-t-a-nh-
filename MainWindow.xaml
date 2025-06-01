@@ -1,0 +1,79 @@
+﻿<Window x:Class="PhanMemQuanLyTaiSan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         Style="{StaticResource MaterialDesignWindow}"
+        xmlns:local="clr-namespace:PhanMemQuanLyTaiSan"
+        mc:Ignorable="d"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+TextElement.FontWeight="Regular"
+TextElement.FontSize="13"
+TextOptions.TextFormattingMode="Ideal"
+TextOptions.TextRenderingMode="Auto"
+Background="{DynamicResource MaterialDesignPaper}"
+FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <materialDesign:Card >
+            <Image Source="D:\lạp trình ứng dụng\PhanMemQuanLyTaiSan\PhanMemQuanLyTaiSan\resource\image\thaprua.jpg" Opacity="0.85" Stretch="Fill"/>
+        </materialDesign:Card>
+
+        <materialDesign:Card Height="230" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="Grid" >
+                        <Setter Property="Margin" Value="15 10 15 5"></Setter>
+
+
+                    </Style>
+
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Text="PHẦN MỀM QUẢN LÝ TÀI SẢN TRONG TÒA NHÀ"
+           FontSize="15"
+           FontWeight="Bold"
+           FontFamily="Segoe UI"
+           Foreground="DodgerBlue"
+           HorizontalAlignment="Center"
+           TextAlignment="Center"
+           TextWrapping="Wrap"/>
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <TextBox
+  VerticalAlignment="Center" x:Name="taikhoan"
+  materialDesign:HintAssist.Hint="Tên đăng nhập"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <PasswordBox 
+  x:Name="matkhau"
+  materialDesign:HintAssist.Foreground="Green"
+  materialDesign:HintAssist.Hint="Mật khẩu"
+  materialDesign:TextFieldAssist.UnderlineBrush="Green"
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Button Content="Đăng nhập" Click="LoginButton_Click"
+                      Background="SteelBlue"
+Width="150"
+
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignRaisedButton}"
+ToolTip="Resource name: MaterialDesignRaisedButton" />
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+
+    </Grid>
+</Window>
