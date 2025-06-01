@@ -1,0 +1,551 @@
+﻿<Window x:Class="PhanMemQuanLyTaiSan.view.HomePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Style="{StaticResource MaterialDesignWindow}"
+        xmlns:local="clr-namespace:PhanMemQuanLyTaiSan.view"
+        mc:Ignorable="d"
+       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="HomePage" Height="800" Width="1200">
+    
+    <Grid>
+        <ContentControl x:Name="MainContentControl" />
+        <materialDesign:Card>
+
+
+            <TabControl
+ materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+ SnapsToDevicePixels="True"
+ Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+ TabStripPlacement="Left">
+                <materialDesign:NavigationRailAssist.FloatingContent>
+                    <Image Source="D:\lạp trình ứng dụng\PhanMemQuanLyTaiSan\PhanMemQuanLyTaiSan\resource\image\icon phan mem.png" Width="40" Height="40" Margin="14"></Image>
+                </materialDesign:NavigationRailAssist.FloatingContent>
+
+                <TabItem Width="120" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="AccountBox" />
+                            <TextBlock FontSize="20"
+                                    HorizontalAlignment="Center" Text="Liên hệ" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+                Command="{Binding AddContactCommand}"
+                Width="150"
+                Height="35"
+                HorizontalAlignment="Left"
+                Margin="5"/>
+                                    <Button Content="Xóa"
+                Command="{Binding DeleteContactCommand}"
+                Width="150"
+                Height="35"
+                HorizontalAlignment="Left"
+                Margin="5"/>
+
+                                </StackPanel>
+
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Contact}" SelectedItem="{Binding SelectedContact, Mode=TwoWay}"  AutoGenerateColumns="False"  IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Email" Binding="{Binding Email}"  Width="80" />
+                                        <DataGridTextColumn Header="Tạo bởi"  Binding="{Binding CreatedBy}" Width="90"/>
+                                        <DataGridTextColumn Header="Tạo ngày"  Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại"  Binding="{Binding Category}" Width="80" />
+                                        <DataGridTextColumn Header="Công ty" Binding="{Binding Company}" Width="100"/>
+                                        <DataGridTextColumn Header="SĐT"  Binding="{Binding Phone}" Width="80"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="120"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="110"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="140"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding Department}" Width="120"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding OrganizationCode}" Width="110"/>
+                                        <DataGridTextColumn Header="Tên"  Binding="{Binding GivenName}" Width="90" />
+                                        <DataGridTextColumn Header="Họ"  Binding="{Binding FamilyName}" Width="90" />
+                                        <DataGridTextColumn Header="Đường"  Binding="{Binding Street}" Width="90" />
+                                        <DataGridTextColumn Header="Hộp bưu điện"  Binding="{Binding PostalBox}" Width="90" />
+                                        <DataGridTextColumn Header="Đường"  Binding="{Binding Town}" Width="90" />
+                                        <DataGridTextColumn Header="Tiêu bang"  Binding="{Binding StateRegion}" Width="110" />
+                                        <DataGridTextColumn Header="Mã bưu điện"  Binding="{Binding PostalCode}" Width="120" />
+                                        <DataGridTextColumn Header="Quốc gia"  Binding="{Binding Country}" Width="120"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="Folder" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Cơ sở" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddFacilityCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteFacilityCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Facility}" SelectedItem="{Binding SelectedFacility, Mode=TwoWay}"  IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên cơ sở" Binding="{Binding Name}" Width="100" />
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="90" />
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại" Binding="{Binding Category}" Width="70" />
+                                        <DataGridTextColumn Header="Tên dự án" Binding="{Binding ProjectName}" Width="100" />
+                                        <DataGridTextColumn Header="Tên trang web" Binding="{Binding SiteName}" Width="120" />
+                                        <DataGridTextColumn Header="Đơn vị tuyến tính" Binding="{Binding LinearUnits}" Width="140" />
+                                        <DataGridTextColumn Header="Đơn vị diện tích" Binding="{Binding AreaUnits}" Width="140" />
+                                        <DataGridTextColumn Header="Đơn vị khối lượng" Binding="{Binding VolumeUnits}" Width="140" />
+                                        <DataGridTextColumn Header="Đơn vị tiền tệ" Binding="{Binding CurrencyUnit}" Width="140" />
+                                        <DataGridTextColumn Header="Đo lường diện tích" Binding="{Binding AreaMeasurement}" Width="140" />
+                                        <DataGridTextColumn Header="Hệ thống bên ngoài" Binding="{Binding ExternalSystem}" Width="140" />
+                                        <DataGridTextColumn Header="Đối tượng dự án" Binding="{Binding ExternalProjectObject}" Width="140" />
+                                        <DataGridTextColumn Header="Mã định danh dự án" Binding="{Binding ExternalIdentifier}" Width="140" />
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSiteObject}" Width="120" />
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtSiteIdentifier}" Width="110" />
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtFacilityObject}" Width="140" />
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtFacilityIdentifier}" Width="140" />
+                                        <DataGridTextColumn Header="Miêu tả" Binding="{Binding Description}" Width="100" />
+                                        <DataGridTextColumn Header="Miêu tả dự án" Binding="{Binding ProjectDescription}" Width="140" />
+                                        <DataGridTextColumn Header="Mô tả trang web" Binding="{Binding SiteDescription}" Width="140" />
+                                        <DataGridTextColumn Header="Giai đoạn" Binding="{Binding Phase}" Width="100" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="FloorPlan" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Sàn" />
+                        </StackPanel >
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddFloorCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteFloorCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Floor}" SelectedItem="{Binding SelectedFloor, Mode=TwoWay}"  IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Vị trí sàn" Binding="{Binding Name}" Width="100" />
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="90"/>
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại" Binding="{Binding Category}" Width="80"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="100"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="120"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="140"/>
+                                        <DataGridTextColumn Header="Miêu tả" Binding="{Binding Description}" Width="100"/>
+                                        <DataGridTextColumn Header="Độ cao" Binding="{Binding Elevation}" Width="90" />
+                                        <DataGridTextColumn Header="Chiều cao" Binding="{Binding Height}" Width="90" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="Home" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Không gian" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddSpaceCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteSpaceCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Space}" SelectedItem="{Binding SelectedSpace, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên" Binding="{Binding Name}" Width="60" />
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="100"/>
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại"  Binding="{Binding Category}" Width="80"/>
+                                        <DataGridTextColumn Header="Vị trí tầng" Binding="{Binding FloorName}" Width="100"/>
+                                        <DataGridTextColumn Header="Miêu tả" Binding="{Binding Description}" Width="100"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="100"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="100"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="120"/>
+                                        <DataGridTextColumn Header="Chiều cao dùng" Binding="{Binding UsableHeight}"  Width="140" />
+                                        <DataGridTextColumn Header="Tổng diện tích" Binding="{Binding GrossArea}"  Width="140" />
+                                        <DataGridTextColumn Header="Khu vực mạng" Binding="{Binding NetArea}" Width="120" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="FileDocumentEdit" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="23" Text="Khu vực" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel  Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddZoneCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteZoneCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Zone}" SelectedItem="{Binding SelectedZone, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên khu vực" Binding="{Binding Name}" Width="120"/>
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="100" />
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại" Binding="{Binding Category}" Width="80" />
+                                        <DataGridTextColumn Header="Tên không gian" Binding="{Binding SpaceNames}" Width="150" />
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="120"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="120"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="140"/>
+                                        <DataGridTextColumn Header="Mô tả" Binding="{Binding Description}" Width="80"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="FormatListBulletedType" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="23" Text="Loại" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel  Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddTypeCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteTypeCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Type}" SelectedItem="{Binding SelectedType, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên" Binding="{Binding Name}" Width="80"/>
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="80" />
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại" Binding="{Binding Category}" Width="80" />
+                                        <DataGridTextColumn Header="Mô tả" Binding="{Binding Description}" Width="80" />
+                                        <DataGridTextColumn Header="Loại tài sản" Binding="{Binding AssetType}" Width="100"/>
+                                        <DataGridTextColumn Header="Nhà sản xuất" Binding="{Binding Manufacturer}" Width="120"/>
+                                        <DataGridTextColumn Header="Số mô hình" Binding="{Binding ModelNumber}" Width="100"/>
+                                        <DataGridTextColumn Header="Bộ phận bảo hành" Binding="{Binding WarrantyGuarantorParts}" Width="150"/>
+                                        <DataGridTextColumn Header="Người bảo lãnh" Binding="{Binding WarrantyDurationParts}" Width="150"/>
+                                        <DataGridTextColumn Header="Thời gian bảo hành" Binding="{Binding WarrantyGuarantorLabor}" Width="150"/>
+                                        <DataGridTextColumn Header="Đơn vị thời gian" Binding="{Binding WarrantyDurationLabor}" Width="140"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding WarrantyDurationUnit}" Width="100"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtSystem}" Width="100"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="120"/>
+                                        <DataGridTextColumn Header="Chi phí thay" Binding="{Binding ReplacementCost}" Width="120"/>
+                                        <DataGridTextColumn Header="Mong muốn" Binding="{Binding ExpectedLife}" Width="120"/>
+                                        <DataGridTextColumn Header="Thời lượng Đơn vị" Binding="{Binding DurationUnit}" Width="140"/>
+                                        <DataGridTextColumn Header="Mô tả sự bảo đảm" Binding="{Binding WarrantyDescription}" Width="140"/>
+                                        <DataGridTextColumn Header="Chiều dài tiêu chuẩn" Binding="{Binding NominalLength}" Width="150"/>
+                                        <DataGridTextColumn Header="Chiều rộng tiêu chuẩn" Binding="{Binding NominalWidth}" Width="170"/>
+                                        <DataGridTextColumn Header="Chiều cao tiêu chuẩn" Binding="{Binding NominalHeight}" Width="170"/>
+                                        <DataGridTextColumn Header="Mô hình tham khảo" Binding="{Binding ModelReference}" Width="170"/>
+                                        <DataGridTextColumn Header="Hình dạng" Binding="{Binding Shape}" Width="100"/>
+                                        <DataGridTextColumn Header="Kích thước" Binding="{Binding Size}" Width="100"/>
+                                        <DataGridTextColumn Header="Màu" Binding="{Binding Color}" Width="80"/>
+                                        <DataGridTextColumn Header="Lớp hoàn thiện" Binding="{Binding Finish}" Width="120"/>
+                                        <DataGridTextColumn Header="Lớp" Binding="{Binding Grade}" Width="80"/>
+                                        <DataGridTextColumn Header="Vật liệu" Binding="{Binding Material}" Width="80"/>
+                                        <DataGridTextColumn Header="Thành phần" Binding="{Binding Constituents}" Width="120"/>
+                                        <DataGridTextColumn Header="Tính năng" Binding="{Binding Features}" Width="100"/>
+                                        <DataGridTextColumn Header="Khả năng tiếp cận" Binding="{Binding AccessibilityPerformance}" Width="140"/>
+                                        <DataGridTextColumn Header="Hiệu suất mã" Binding="{Binding CodePerformance}" Width="120"/>
+                                        <DataGridTextColumn Header="Hiệu suất bền vững" Binding="{Binding SustainabilityPerformance}" Width="170"/>
+                                        <DataGridTextColumn Header="Khu vực" Binding="{Binding Area}" Width="100"/>
+                                        <DataGridTextColumn Header="Chiều dài" Binding="{Binding Length}" Width="100"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel
+       Width="auto"
+       Height="auto">
+
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center"  Kind="ProjectorScreenVariant" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Thành phần" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddComponentCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteComponentCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Component}" SelectedItem="{Binding SelectedComponent, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên"  Binding="{Binding Name}" Width="60" />
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="90"/>
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Kiểu tên" Binding="{Binding TypeName}" Width="100"/>
+                                        <DataGridTextColumn Header="Mô tả" Binding="{Binding Description}" Width="100"/>
+                                        <DataGridTextColumn Header="Không gian" Binding="{Binding Space}" Width="120"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="100"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="100"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="120"/>
+                                        <DataGridTextColumn Header="Số seri" Binding="{Binding SerialNumber}" Width="100"/>
+                                        <DataGridTextColumn Header="Ngày cài đặt" Binding="{Binding InstallationDate}"  Width="120" />
+                                        <DataGridTextColumn Header="Ngày bắt đầu bảo hành" Binding="{Binding WarrantyStartDate}"  Width="180" />
+                                        <DataGridTextColumn Header="Số thẻ" Binding="{Binding TagNumber}" Width="100" />
+                                        <DataGridTextColumn Header="Mã vạch" Binding="{Binding BarCode}" Width="100" />
+                                        <DataGridTextColumn Header="Mã định danh tài sản" Binding="{Binding AssetIdentifier}"  Width="180" />
+                                        <DataGridTextColumn Header="Khu vực" Binding="{Binding Area}"  Width="120" />
+                                        <DataGridTextColumn Header="Chiều dài" Binding="{Binding Length}" Width="120" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="PipeValve" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Hệ thống" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddSystemsCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteSystemsCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Systems}" SelectedItem="{Binding SelectedSystems, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên"  Binding="{Binding Name}" Width="90" />
+                                        <DataGridTextColumn Header="Tạo bởi"  Binding="{Binding CreatedBy}" Width="90"/>
+                                        <DataGridTextColumn Header="Tạo ngày"  Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại"  Binding="{Binding Category}" Width="80"/>
+                                        <DataGridTextColumn Header="Tên thành phần"  Binding="{Binding ComponentNames}" Width="180"/>
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="120"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="120"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="120"/>
+                                        <DataGridTextColumn Header="Miêu tả" Binding="{Binding Description}" Width="90"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="60" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="EyedropperVariant" />
+                            <TextBlock
+                             HorizontalAlignment="Center" FontSize="20" Text="Thuộc tính" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddAttributesCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteAttributesCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid x:Name="attributesDataGrid"
+       AutoGenerateColumns="True"
+     Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Attributes}" SelectedItem="{Binding SelectedAttributes, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Tên" Binding="{Binding Name}" Width="60" />
+                                        <DataGridTextColumn Header="Tạo bởi" Binding="{Binding CreatedBy}" Width="90"/>
+                                        <DataGridTextColumn Header="Tạo ngày" Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại" Binding="{Binding Category}" Width="80"/>
+                                        <DataGridTextColumn Header="Tên trang tính" Binding="{Binding SheetName}" Width="120"/>
+                                        <DataGridTextColumn Header="Tên hàng" Binding="{Binding RowName}" Width="110"/>
+                                        <DataGridTextColumn Header="Giá trị" Binding="{Binding Value}" Width="100"/>
+                                        <DataGridTextColumn Header="Đơn vị" Binding="{Binding Unit}" Width="90" />
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="100"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="100"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="120"/>
+                                        <DataGridTextColumn Header="Miêu tả" Binding="{Binding Description}" Width="100" />
+                                        <DataGridTextColumn Header="Giá trị được phép" Binding="{Binding AllowedValues}" Width="140" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Width="100" Height="70" Background="MediumBlue">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="30" Height="30" HorizontalAlignment="Center" Kind="MopedOutline" />
+                            <TextBlock 
+                             HorizontalAlignment="Center" FontSize="20" Text="Điều phối" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Background="#FFF9F9F9" Margin="16">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Button Content="Thêm"
+Command="{Binding AddCoordinatesCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+                                    <Button Content="Xóa"
+Command="{Binding DeleteCoordinatesCommand}"
+Width="150"
+Height="35"
+HorizontalAlignment="Left"
+Margin="5"/>
+
+                                </StackPanel>
+                                <DataGrid Background="#C0D9FF" BorderThickness="0" ItemsSource="{Binding Coordinates}" SelectedItem="{Binding SelectedCoordinates, Mode=TwoWay}"   IsReadOnly="False"
+              CanUserAddRows="False">
+                                    <DataGrid.Columns >
+                                        <DataGridTextColumn Header="Tên"  Binding="{Binding Name}" Width="60" />
+                                        <DataGridTextColumn Header="Tạo bởi"  Binding="{Binding CreatedBy}" Width="90"/>
+                                        <DataGridTextColumn Header="Tạo ngày"  Binding="{Binding CreatedOn}" Width="100" />
+                                        <DataGridTextColumn Header="Loại"  Binding="{Binding Category}" Width="80"/>
+                                        <DataGridTextColumn Header="Tên trang tính"  Binding="{Binding SheetName}" Width="120"/>
+                                        <DataGridTextColumn Header="Tên hàng" Binding="{Binding RowName}" Width="110"/>
+                                        <DataGridTextColumn Header="Tọa độ X"  Binding="{Binding CoordinateXAxis}" Width="90"/>
+                                        <DataGridTextColumn Header="Tọa độ Y" Binding="{Binding CoordinateYAxis}" Width="90" />
+                                        <DataGridTextColumn Header="Tọa độ Z" Binding="{Binding CoordinateZAxis}" Width="100" />
+                                        <DataGridTextColumn Header="Hệ thống" Binding="{Binding ExtSystem}" Width="100"/>
+                                        <DataGridTextColumn Header="Đối tượng" Binding="{Binding ExtObject}" Width="100"/>
+                                        <DataGridTextColumn Header="Mã định danh" Binding="{Binding ExtIdentifier}" Width="120"/>
+                                        <DataGridTextColumn Header="Xoay trục X" Binding="{Binding ClockwiseRotation}" Width="200"/>
+                                        <DataGridTextColumn Header="Xoay trục Y" Binding="{Binding ElevationalRotation}" Width="140" />
+                                        <DataGridTextColumn Header="Xoay trục Z"  Binding="{Binding YawRotation}"  Width="140" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+
+    </Grid>
+</Window>
