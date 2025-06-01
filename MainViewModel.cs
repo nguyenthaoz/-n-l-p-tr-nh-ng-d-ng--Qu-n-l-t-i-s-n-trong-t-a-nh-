@@ -34,6 +34,16 @@ namespace PhanMemQuanLyTaiSan.viewmodel
         public ICommand DeleteSystemsCommand { get; }
         public ICommand DeleteAttributesCommand { get; }
         public ICommand DeleteCoordinatesCommand { get; }
+        public ICommand AddContactCommand { get; }
+        public ICommand AddFacilityCommand { get; }
+        public ICommand AddSpaceCommand { get; }
+        public ICommand AddFloorCommand { get; }
+        public ICommand AddZoneCommand { get; }
+        public ICommand AddTypeCommand { get; }
+        public ICommand AddComponentCommand { get; }
+        public ICommand AddSystemsCommand { get; }
+        public ICommand AddAttributesCommand { get; }
+        public ICommand AddCoordinatesCommand { get; }
 
 
         public MainViewModel()
@@ -54,6 +64,16 @@ namespace PhanMemQuanLyTaiSan.viewmodel
             DeleteSystemsCommand = new RelayCommand(_ => DeleteSelectedSystems(), _ => SelectedSystems != null);
             DeleteAttributesCommand = new RelayCommand(_ => DeleteSelectedAttributes(), _ => SelectedAttributes != null);
             DeleteCoordinatesCommand = new RelayCommand(_ => DeleteSelectedCoordinates(), _ => SelectedCoordinates != null);
+            AddContactCommand = new RelayCommand(_ => AddNewContact());
+            AddFacilityCommand = new RelayCommand(_ => AddNewFacility());
+            AddSpaceCommand = new RelayCommand(_ => AddNewSpace());
+            AddFloorCommand = new RelayCommand(_ => AddNewFloor());
+            AddZoneCommand = new RelayCommand(_ => AddNewZone());
+            AddTypeCommand = new RelayCommand(_ => AddNewType());
+            AddComponentCommand = new RelayCommand(_ => AddNewComponent());
+            AddSystemsCommand = new RelayCommand(_ => AddNewSystems());
+            AddAttributesCommand = new RelayCommand(_ => AddNewAttributes());
+            AddCoordinatesCommand = new RelayCommand(_ => AddNewCoordinates());
 
         }
 
@@ -244,6 +264,258 @@ namespace PhanMemQuanLyTaiSan.viewmodel
                 OnPropertyChanged(nameof(SelectedCoordinates));
             }
         }
+
+        private void AddNewContact()
+        {
+            var newItem = new LienHe
+            {
+                Email = "email@example.com",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại liên hệ",
+                Company = "Tên công ty",
+                Phone = "0123456789",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng liên hệ",
+                ExtIdentifier = "Mã định danh",
+                Department = "Phòng ban",
+                OrganizationCode = "Mã tổ chức",
+                GivenName = "Tên",
+                FamilyName = "Họ",
+                Street = "Số nhà, Đường",
+                PostalBox = "",
+                Town = "Thị trấn/Quận",
+                StateRegion = "Tỉnh/Thành phố",
+                PostalCode = "100000",
+                Country = "Việt Nam"
+            };
+
+            Contact.Add(newItem);
+            SelectedContact = newItem;
+        }
+        private void AddNewFacility()
+        {
+            var newItem = new CoSo
+            {
+                Name = "Tên cơ sở",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                ProjectName = "Tên dự án",
+                SiteName = "Tên địa điểm",
+                LinearUnits = "m",
+                AreaUnits = "m2",
+                VolumeUnits = "m3",
+                CurrencyUnit = "VND",
+                AreaMeasurement = "Diện tích đo được",
+                ExtSystem = "Hệ thống ngoài",
+                ExtProjectObject = "Đối tượng dự án",
+                ExtProjectIdentifier = "Mã dự án",
+                ExtSiteObject = "Đối tượng địa điểm",
+                ExtSiteIdentifier = "Mã địa điểm",
+                ExtFacilityObject = "Đối tượng cơ sở",
+                ExtFacilityIdentifier = "Mã cơ sở",
+                Description = "Mô tả",
+                ProjectDescription = "Mô tả dự án",
+                SiteDescription = "Mô tả địa điểm",
+                Phase = "Giai đoạn"
+            };
+
+            Facility.Add(newItem);
+            SelectedFacility = newItem;
+        }
+        private void AddNewSpace()
+        {
+            var newItem = new KhongGian
+            {
+                Name = "Tên không gian",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                FloorName = "Tên tầng",
+                Description = "Mô tả",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                UsableHeight = "Chiều cao sử dụng",
+                GrossArea = "Tổng diện tích",
+                NetArea = "Diện tích sử dụng"
+            };
+
+            Space.Add(newItem);
+            SelectedSpace = newItem;
+        }
+        private void AddNewFloor()
+        {
+            var newItem = new San
+            {
+                Name = "Tên sàn",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                Description = "Mô tả",
+                Elevation = "Độ cao",
+                Height = "Chiều cao"
+            };
+
+            Floor.Add(newItem);
+            SelectedFloor = newItem;
+        }
+        private void AddNewZone()
+        {
+            var newItem = new KhuVuc
+            {
+                Name = "Tên khu vực",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                SpaceNames = "Tên không gian",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                Description = "Mô tả"
+            };
+
+            Zone.Add(newItem);
+            SelectedZone = newItem;
+        }
+        private void AddNewType()
+        {
+            var newItem = new Loai
+            {
+                Name = "Tên loại",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Danh mục",
+                Description = "Mô tả",
+                AssetType = "Thiết bị",
+                Manufacturer = "Nhà sản xuất",
+                ModelNumber = "Model123",
+                WarrantyGuarantorParts = "Bảo hành bộ phận",
+                WarrantyDurationParts = "12 tháng",
+                WarrantyGuarantorLabor = "Bảo hành nhân công",
+                WarrantyDurationUnit = "Tháng",
+                ExtSystem = "Hệ thống",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã123",
+                ReplacementCost = "1000000",
+                ExpectedLife = "5 năm",
+                DurationUnit = "Năm",
+                WarrantyDescription = "Mô tả bảo hành",
+                NominalLength = "100",
+                NominalWidth = "50",
+                NominalHeight = "25",
+                ModelReference = "RefModel",
+                Shape = "Hình dạng",
+                Size = "Kích thước",
+                Color = "Màu sắc",
+                Grade = "Cấp",
+                Material = "Vật liệu",
+                Constituents = "Thành phần",
+                Features = "Tính năng",
+                AccessibilityPerformance = "Hiệu suất tiếp cận",
+                CodePerformance = "Hiệu suất mã",
+                SustainabilityPerformance = "Hiệu suất bền vững",
+                Area = "200",
+                Length = "300"
+            };
+
+            Type.Add(newItem);
+            SelectedType = newItem;
+        }
+        private void AddNewComponent()
+        {
+            var newItem = new ThanhPhan
+            {
+                Name = "Tên thành phần",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                TypeName = "Kiểu",
+                Space = "Không gian",
+                Description = "Mô tả",
+                ExtSystem = "Hệ thống",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                SerialNumber = "SN123",
+                InstallationDate = DateTime.Now.ToString("dd/MM/yyyy"),
+                WarrantyStartDate = DateTime.Now.ToString("dd/MM/yyyy"),
+                TagNumber = "Tag001",
+                AssetIdentifier = "AssetID001",
+                Area = "100",
+                Length = "200"
+            };
+
+            Component.Add(newItem);
+            SelectedComponent = newItem;
+        }
+        private void AddNewSystems()
+        {
+            var newItem = new HeThong
+            {
+                Name = "Tên hệ thống",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                ComponentNames = "Danh sách thành phần",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                Description = "Mô tả"
+            };
+
+            Systems.Add(newItem);
+            SelectedSystems = newItem;
+        }
+        private void AddNewAttributes()
+        {
+            var newItem = new ThuocTinh
+            {
+                Name = "Tên thuộc tính",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                SheetName = "Tên sheet",
+                RowName = "Tên hàng",
+                Value = "Giá trị",
+                Unit = "Đơn vị",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                Description = "Mô tả",
+                AllowedValues = "Giá trị cho phép"
+            };
+
+            Attributes.Add(newItem);
+            SelectedAttributes = newItem;
+        }
+        private void AddNewCoordinates()
+        {
+            var newItem = new DieuPhoi
+            {
+                Name = "Tên điều phối",
+                CreatedBy = "Người tạo",
+                CreatedOn = DateTime.Now.ToString("dd/MM/yyyy"),
+                Category = "Loại",
+                SheetName = "Tên sheet",
+                RowName = "Tên hàng",
+                CoordinateXAxis = "0.0",
+                CoordinateYAxis = "0.0",
+                CoordinateZAxis = "0.0",
+                ExtSystem = "Hệ thống ngoài",
+                ExtObject = "Đối tượng",
+                ExtIdentifier = "Mã định danh",
+                ClockwiseRotation = "0",
+                ElevationalRotation = "0",
+                YawRotation = "0"
+            };
+
+            Coordinates.Add(newItem);
+            SelectedCoordinates = newItem;
+        }
+
         private string SelectExcelFile()
         {
             var dialog = new Microsoft.Win32.OpenFileDialog
